@@ -1,0 +1,41 @@
+\begin{thebibliography}{1}
+
+\bibitem[acrobat()]{acrobat}
+{Adobe Acrobat}.
+\newblock \url{http://www.adobe.com/products/acrobat/}.
+
+\bibitem[APA(2009)]{apa}
+APA.
+\newblock {\em Publication Manual of the American Psychological Association},
+  6th~ed.
+\newblock APA, Washington, DC, USA, 2009.
+
+\bibitem[association()]{acm_categories}
+{How to Classify Works Using ACM's Computing Classification System}.
+\newblock \url{http://www.acm.org/class/how_to_use.html}.
+
+\bibitem[Card et~al.(1990)Card, Mackinlay, and Robertson]{Card1990}
+Card, S.~K., Mackinlay, J.~D., and Robertson, G.~G.
+\newblock \href{http://doi.acm.org/10.1145/97243.97263}{The design space of
+  input devices}.
+\newblock In {\em Proc.\ CHI '90}, ACM (New York, NY, USA,
+  1990), 117--124.
+
+\bibitem[Card et~al.(1991)Card, Mackinlay, and Robertson]{Card1991}
+Card, S.~K., Mackinlay, J.~D., and Robertson, G.~G.
+\newblock \href{http://doi.acm.org/10.1145/123078.128726}{A morphological
+  analysis of the design space of input devices}.
+\newblock {\em ACM TOIS 9}, 2 (April 1991),
+  99--122.
+
+\bibitem[Card et~al.(1983)Card, Thomas, and Newall]{Card1983}
+Card, S.~K., Thomas, T.~P., and Newall, A.
+\newblock {\em The Psychology of Human-Computer Interaction}.
+\newblock Lawrence Erlbaum Associates, London, 1983.
+
+\bibitem[Gillick and Lam(1996)]{Gillick1996}
+Gillick, W.~G., and Lam, C.~C., U.S.
+\newblock Patent No.\ 5530455. U.S. Patent and Trademark Office (Washington,
+  DC, 1996).
+
+\end{thebibliography}
