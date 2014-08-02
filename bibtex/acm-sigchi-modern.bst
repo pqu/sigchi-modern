@@ -1,5 +1,5 @@
-% ACM Transactions bibliography style (24-Jan-88 version)
-%    A lot like abbrv.bst, but names come out "Last, initials", and in \sc.
+% ACM SIGCHI bibliography style (11-Nov-12 version)
+%    A lot like abbrv.bst, but names come out "Last, initials".
 %    Some dates are parenthesized.
 %
 %    History
@@ -17,12 +17,20 @@
 %                             SIGCHI requirement. Move address and date to after publisher (instead of
 %                             after proceedings title).
 %                             Zachary O. Toups
+%    11/11/12   Updated to work with natbib.
+%               Added format for 'patent' and 'standard' publication types.
+%               Link titles to their respective urls (requires 'url' package).
+%               (Philip Quinn)
+%    06/18/14   Link titles to dx.doi.org (if supplied; 'url' has priority).
+%               (Philip Quinn)
+%
 
 ENTRY
   { address
     author
     booktitle
     chapter
+    doi
     edition
     editor
     howpublished
@@ -30,20 +38,23 @@ ENTRY
     journal
     key
     month
+    nationality
     note
     number
     organization
     pages
     publisher
+    revision
     school
     series
     title
     type
+    url
     volume
     year
   }
   {}
-  { label }
+  { label authorlabel extra.label sort.label short.list }
 
 INTEGERS { output.state before.all mid.sentence after.sentence after.block }
 
@@ -90,16 +101,6 @@ FUNCTION {output.check}
     { pop$ "empty " t * " in " * cite$ * warning$ }
     'output.nonnull
   if$
-}
-
-FUNCTION {output.bibitem}
-{ newline$
-  "\bibitem{" write$
-  cite$ write$
-  "}" write$
-  newline$
-  ""
-  before.all 'output.state :=
 }
 
 FUNCTION {fin.entry}
@@ -182,6 +183,92 @@ FUNCTION {emphasizeic}
 }
 
 INTEGERS { nameptr namesleft numnames }
+
+FUNCTION {format.full.names}
+{'s :=
+  #1 'nameptr :=
+  s num.names$ 'numnames :=
+  numnames 'namesleft :=
+    { namesleft #0 > }
+    { s nameptr
+      "{vv~}{ll}" format.name$ 't :=
+      nameptr #1 >
+        {
+          namesleft #1 >
+            { ", " * t * }
+            {
+              numnames #2 >
+                { "," * }
+                'skip$
+              if$
+              t "others" =
+                { " et~al." * }
+                { " and " * t * }
+              if$
+            }
+          if$
+        }
+        't
+      if$
+      nameptr #1 + 'nameptr :=
+      namesleft #1 - 'namesleft :=
+    }
+  while$
+}
+
+FUNCTION {author.editor.full}
+{ author empty$
+    { editor empty$
+        { "" }
+        { editor format.full.names }
+      if$
+    }
+    { author format.full.names }
+  if$
+}
+
+FUNCTION {author.full}
+{ author empty$
+    { "" }
+    { author format.full.names }
+  if$
+}
+
+FUNCTION {editor.full}
+{ editor empty$
+    { "" }
+    { editor format.full.names }
+  if$
+}
+
+FUNCTION {make.full.names}
+{ type$ "book" =
+  type$ "inbook" =
+  or
+    'author.editor.full
+    { type$ "proceedings" =
+        'editor.full
+        'author.full
+      if$
+    }
+  if$
+}
+
+FUNCTION {output.bibitem}
+{ newline$
+  "\bibitem[" write$
+  authorlabel write$
+  ")" make.full.names duplicate$ short.list =
+     { pop$ }
+     { * }
+   if$
+  "]{" * write$
+  cite$ write$
+  "}" write$
+  newline$
+  ""
+  before.all 'output.state :=
+}
 
 FUNCTION {format.names}
 { 's :=
@@ -270,10 +357,21 @@ FUNCTION {format.ineditors}
   if$
 }
 
-FUNCTION {format.title}
+FUNCTION {format.title.plain}
 { title empty$
     { "" }
     { title "t" change.case$ }
+  if$
+}
+
+FUNCTION {format.title}
+{ url empty$
+    { doi empty$
+      { format.title.plain }
+      { new.block "\href{http://dx.doi.org/" doi * "}{" * format.title.plain * "}" * }
+      if$
+    }
+    { new.block "\href{" url * "}{" * format.title.plain * "}" * }
   if$
 }
 
@@ -624,6 +722,24 @@ FUNCTION {format.incoll.inproc.crossref}
   " \cite{" * crossref * "}" *
 }
 
+FUNCTION {format.nationality}
+{ nationality empty$
+    { "" }
+    { nationality }
+  if$
+}
+
+FUNCTION {format.patnumber}
+{ number empty$
+    { "" }
+    { type empty$
+        { new.block "Patent No.\ " number * }
+        { new.block "Patent " type * " No.\ " * number * "." * }
+      if$
+    }
+  if$
+}
+
 FUNCTION {article}
 { output.bibitem
   format.authors "author" output.check
@@ -822,6 +938,18 @@ FUNCTION {misc}
   empty.misc.check
 }
 
+FUNCTION {patent}
+{ output.bibitem
+  new.block
+  format.authors output
+  format.nationality output
+  format.patnumber output.nonnull
+  new.sentence
+  publisher output
+  format.addr.date
+  fin.entry
+}
+
 FUNCTION {phdthesis}
 { output.bibitem
   format.authors "author" output.check
@@ -858,6 +986,20 @@ FUNCTION {proceedings}
   fin.entry
 }
 
+FUNCTION {standard}
+{ output.bibitem
+  format.authors "author" output.check
+  new.block
+  format.title "title" output.check
+  revision output
+  new.sentence
+  organization output
+  format.addr.date 
+  new.block
+  note output
+  fin.entry
+}
+
 FUNCTION {techreport}
 { output.bibitem
   format.authors "author" output.check
@@ -886,71 +1028,6 @@ FUNCTION {unpublished}
 
 FUNCTION {default.type} { misc }
 
-MACRO {jan} {"Jan."}
-
-MACRO {feb} {"Feb."}
-
-MACRO {mar} {"Mar."}
-
-MACRO {apr} {"Apr."}
-
-MACRO {may} {"May"}
-
-MACRO {jun} {"June"}
-
-MACRO {jul} {"July"}
-
-MACRO {aug} {"Aug."}
-
-MACRO {sep} {"Sept."}
-
-MACRO {oct} {"Oct."}
-
-MACRO {nov} {"Nov."}
-
-MACRO {dec} {"Dec."}
-
-MACRO {acmcs} {"ACM Comput. Surv."}
-
-MACRO {acta} {"Acta Inf."}
-
-MACRO {cacm} {"Commun. ACM"}
-
-MACRO {ibmjrd} {"IBM J. Res. Dev."}
-
-MACRO {ibmsj} {"IBM Syst.~J."}
-
-MACRO {ieeese} {"IEEE Trans. Softw. Eng."}
-
-MACRO {ieeetc} {"IEEE Trans. Comput."}
-
-MACRO {ieeetcad}
- {"IEEE Trans. Comput.-Aided Design Integrated Circuits"}
-
-MACRO {ipl} {"Inf. Process. Lett."}
-
-MACRO {jacm} {"J.~ACM"}
-
-MACRO {jcss} {"J.~Comput. Syst. Sci."}
-
-MACRO {scp} {"Sci. Comput. Programming"}
-
-MACRO {sicomp} {"SIAM J. Comput."}
-
-MACRO {tocs} {"ACM Trans. Comput. Syst."}
-
-MACRO {tods} {"ACM Trans. Database Syst."}
-
-MACRO {tog} {"ACM Trans. Gr."}
-
-MACRO {toms} {"ACM Trans. Math. Softw."}
-
-MACRO {toois} {"ACM Trans. Office Inf. Syst."}
-
-MACRO {toplas} {"ACM Trans. Program. Lang. Syst."}
-
-MACRO {tcs} {"Theoretical Comput. Sci."}
-
 READ
 
 FUNCTION {sortify}
@@ -967,6 +1044,112 @@ FUNCTION {chop.word}
     { s len #1 + global.max$ substring$ }
     's
   if$
+}
+
+FUNCTION {format.lab.names}
+{ 's :=
+  s #1 "{vv~}{ll}" format.name$
+  s num.names$ duplicate$
+  #2 >
+    { pop$ " et~al." * }
+    { #2 <
+        'skip$
+        { s #2 "{ff }{vv }{ll}{ jj}" format.name$ "others" =
+            { " et~al." * }
+            { " and " * s #2 "{vv~}{ll}" format.name$ * }
+          if$
+        }
+      if$
+    }
+  if$
+}
+
+FUNCTION {author.key.label}
+{ author empty$
+    { key empty$
+        { cite$ #1 #3 substring$ }
+        'key
+      if$
+    }
+    { author format.lab.names }
+  if$
+}
+
+FUNCTION {author.editor.key.label}
+{ author empty$
+    { editor empty$
+        { key empty$
+            { cite$ #1 #3 substring$ }
+            'key
+          if$
+        }
+        { editor format.lab.names }
+      if$
+    }
+    { author format.lab.names }
+  if$
+}
+
+FUNCTION {author.key.organization.label}
+{ author empty$
+    { key empty$
+        { organization empty$
+            { cite$ #1 #3 substring$ }
+            { "The " #4 organization chop.word #3 text.prefix$ }
+          if$
+        }
+        'key
+      if$
+    }
+    { author format.lab.names }
+  if$
+}
+
+FUNCTION {editor.key.organization.label}
+{ editor empty$
+    { key empty$
+        { organization empty$
+            { cite$ #1 #3 substring$ }
+            { "The " #4 organization chop.word #3 text.prefix$ }
+          if$
+        }
+        'key
+      if$
+    }
+    { editor format.lab.names }
+  if$
+}
+
+FUNCTION {calc.short.authors}
+{ type$ "book" =
+  type$ "inbook" =
+  or
+    'author.editor.key.label
+    { type$ "proceedings" =
+        'editor.key.organization.label
+        { type$ "manual" =
+            'author.key.organization.label
+            'author.key.label
+          if$
+        }
+      if$
+    }
+  if$
+  'short.list :=
+}
+
+FUNCTION {calc.authorlabel}
+{ calc.short.authors
+  short.list
+  "("
+  *
+  year duplicate$ empty$
+  short.list key field.or.null = or
+     { pop$ "" }
+     'skip$
+  if$
+  *
+  'authorlabel :=
 }
 
 FUNCTION {sort.format.names}
@@ -1067,7 +1250,8 @@ FUNCTION {editor.organization.sort}
 }
 
 FUNCTION {presort}
-{ type$ "book" =
+{ calc.authorlabel
+  type$ "book" =
   type$ "inbook" =
   or
     'author.editor.sort
