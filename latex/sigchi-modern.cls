@@ -180,7 +180,7 @@
 %% FORMATTING ================================================================
 %% Fonts
 \RequirePackage{mathptmx}             % Times for rm and math
-\RequirePackage[scaled=0.92]{helvet}  % Helvetica for sans
+\RequirePackage[scaled]{helvet}       % Helvetica for sans
 \RequirePackage[T1]{fontenc}
 \renewcommand{\ttdefault}{cmtt}       % Computer Modern for tt
 
