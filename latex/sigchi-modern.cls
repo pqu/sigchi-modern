@@ -1,6 +1,6 @@
 %% SIGCHI Proceedings Document Class
-%% Version 1.1
-%% Copyright Philip Quinn (philip.quinn@canterbury.ac.nz), 2 August 2014,
+%% Version 1.2
+%% Copyright Philip Quinn (philip.quinn@canterbury.ac.nz), 18 September 2014,
 %% All Rights Reserved.
 %%
 %% This work may be distributed and/or modified under the conditions of the
@@ -195,61 +195,25 @@
 }
 
 %% Sections
+\RequirePackage{titlesec}
 \RequirePackage{textcase}
-% Syntax:
-%   \@startsection{name}{level}{indent}{before skip}{after skip}{style}
-\renewcommand{\section}{%
-  \@startsection{section}{1}{\z@}%
-  {\z@ plus 3pt minus 3pt}%
-  {0.5pt}{\baselineskip=14pt\sffamily\bfseries\small\MakeTextUppercase}%
-}
 
-\renewcommand{\subsection}{%
-  \@startsection{subsection}{2}{\z@}%
-  {\z@ plus 3pt minus 3pt}%
-  {0.5pt}{\baselineskip=14pt\sffamily\small\bfseries}%
-}
-
-\renewcommand{\subsubsection}{%
-  \@startsection{subsubsection}{3}{\z@}%
-  {\z@ plus 2pt minus 1pt}%
-  {0.5pt}{\baselineskip=14pt\sffamily\itshape\small}%
-}
+\titleformat*{\section}%
+  {\baselineskip=14pt\sffamily\bfseries\small\MakeTextUppercase}
+\titleformat*{\subsection}{\baselineskip=14pt\sffamily\small\bfseries}
+\titleformat*{\subsubsection}{\baselineskip=14pt\sffamily\itshape\small}
 
 % Force a period after \paragraph headings
-\renewcommand{\paragraph}[1]{\@paragraph{#1.}}
-\newcommand{\@paragraph}{%
-  \@startsection{paragraph}{4}{\z@}{\z@ plus 2pt minus 1pt}%
-  {-0.5em}{\baselineskip=14pt\sffamily\itshape\small}%
-}
+\newcommand{\@periodafter}[1]{#1.}
+\titleformat{\paragraph}[runin]%
+  {\baselineskip=14pt\sffamily\itshape\small}%
+  {\theparagraph}{\z@}{}[\@periodafter]
 
 % Avoid the \parskip after headings
-% (This is copied from `article.cls', except for the `New bit'.)
-\renewcommand{\@xsect}[1]{%
-  \@tempskipa #1\relax
-  \ifdim \@tempskipa>\z@
-    \par \nobreak
-    \vskip \@tempskipa
-    \vskip -\parskip   % New bit
-    \@afterheading
-  \else
-    \@nobreakfalse
-    \global\@noskipsectrue
-    \everypar{%
-      \if@noskipsec
-        \global\@noskipsecfalse
-        {\setbox\z@\lastbox}%
-        \clubpenalty\@M
-        \begingroup \@svsechd \endgroup
-        \unskip
-        \@tempskipa #1\relax
-        \hskip -\@tempskipa
-      \else
-        \clubpenalty \@clubpenalty
-        \everypar{}%
-      \fi}%
-  \fi
-\ignorespaces}
+\titlespacing{\section}{0pt}{\z@}{-\parskip}
+\titlespacing{\subsection}{0pt}{\z@}{-\parskip}
+\titlespacing{\subsubsection}{0pt}{\z@}{-\parskip}
+\titlespacing{\paragraph}{0pt}{\z@}{0.5em}
 
 \setlength{\parskip}{1ex}
 \setlength{\parindent}{0pt}
@@ -303,9 +267,6 @@
     }%
   }{}%
 }
-
-% Avoid \parskip after bibliography \section
-\renewcommand{\refname}{References\vspace{-\parskip}}
 
 % Reduce spacing between list items
 \RequirePackage{enumitem}
