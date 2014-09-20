@@ -179,8 +179,9 @@
 
 %% FORMATTING ================================================================
 %% Fonts
-\RequirePackage{mathptmx}             % Times for rm and math
-\RequirePackage[scaled]{helvet}       % Helvetica for sans
+% Times for rm and math; Helvetica for sans
+\RequirePackage{newtxtext}
+\RequirePackage[cmintegrals]{newtxmath}
 \RequirePackage[T1]{fontenc}
 \renewcommand{\ttdefault}{cmtt}       % Computer Modern for tt
 
