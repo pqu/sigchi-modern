@@ -217,7 +217,7 @@
 \titlespacing{\subsubsection}{0pt}{\z@}{-\parskip}
 \titlespacing{\paragraph}{0pt}{\z@}{0.5em}
 
-\setlength{\parskip}{1ex}
+\setlength{\parskip}{1ex plus 2pt minus 1pt}
 \setlength{\parindent}{0pt}
 
 \setcounter{secnumdepth}{0}
