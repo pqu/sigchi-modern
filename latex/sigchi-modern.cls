@@ -223,8 +223,7 @@
 \setcounter{secnumdepth}{0}
 
 % Captions
-\RequirePackage[font={small,bf,rm},labelsep=period,belowskip=-\baselineskip]%
-  {caption}
+\RequirePackage[font={small,bf,rm},labelsep=period]{caption}
   
 % Floats
 \renewcommand{\topfraction}{0.7}     % Max. fraction of a page for top floats
@@ -243,7 +242,9 @@
 \setcounter{dbltopnumber}{2}  % Max. number of two-column floats on a page
 
 % Space between adjacent floats
-\setlength{\floatsep}{18pt plus 2.0pt minus 2.0pt}
+\setlength{\floatsep}{10pt plus 2pt minus 1pt}
+% Space between float and text
+\setlength{\textfloatsep}{12pt plus 0pt minus 2pt}
 
 % Only number pages in non-final versions
 \ifthenelse{\boolean{@preprint} \OR \boolean{@submission}}
