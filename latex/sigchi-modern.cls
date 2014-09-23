@@ -1,6 +1,6 @@
 %% SIGCHI Proceedings Document Class
-%% Version 1.2
-%% Copyright Philip Quinn (philip.quinn@canterbury.ac.nz), 18 September 2014,
+%% Version 1.3
+%% Copyright Philip Quinn (philip.quinn@canterbury.ac.nz), 24 September 2014,
 %% All Rights Reserved.
 %%
 %% This work may be distributed and/or modified under the conditions of the
@@ -82,8 +82,8 @@
 %% \end{document}
 %%
 
-\def\fileversion{1.1}
-\def\filedate{2014/08/02}
+\def\fileversion{1.3}
+\def\filedate{2014/09/24}
 \NeedsTeXFormat{LaTeX2e}
 \ProvidesClass{sigchi-modern}[\filedate\space\fileversion\space
     SIGCHI Proceedings Format (Modern)]
