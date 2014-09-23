@@ -182,6 +182,7 @@
 % Times for rm and math; Helvetica for sans
 \RequirePackage{newtxtext}
 \RequirePackage[cmintegrals]{newtxmath}
+\RequirePackage[scaled]{helvet}
 \RequirePackage[T1]{fontenc}
 \renewcommand{\ttdefault}{cmtt}       % Computer Modern for tt
 
