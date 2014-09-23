@@ -185,6 +185,7 @@
 \RequirePackage[scaled]{helvet}
 \RequirePackage[T1]{fontenc}
 \renewcommand{\ttdefault}{cmtt}       % Computer Modern for tt
+\RequirePackage{textcomp}
 
 % Shrink the baseline a bit on \normalsize
 \renewcommand{\normalsize}{%
