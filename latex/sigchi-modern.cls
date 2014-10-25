@@ -20,13 +20,13 @@
 %%
 %% This document class formats articles in the SIGCHI conference proceedings
 %% format. It is a re-write of previous versions, and improves upon them by
-%% using modern LaTeX techniques and packages to minimally modify the `article`
-%% class. This means it is easier to work with, more compatible with other
-%% packages, and produces tidier output.
+%% using modern LaTeX techniques and packages to minimally modify the `article'
+%% class. It is easier to work with, more compatible with other packages, and
+%% produces tidier output.
 %%
 %% Refer to the `sigchi-modern-sample.tex' and `sigchi-modern-sample.pdf' files
-%% for more complete documentation and examples of this class and the SIGCHI
-%% style.
+%% for more complete documentation and examples of using this class and the
+%% SIGCHI style.
 %%
 %% Based on the layout of previous `sigchi.cls' formats by:
 %%   Michel Beaudouin-Lafon, William Hudson, Jean-Dean Fekete, Manas Tungare,
@@ -119,7 +119,7 @@
 \RequirePackage[usenames,dvipsnames,svgnames]{xcolor}
 \RequirePackage{url}
 
-% It's preferable to load hyperref last, as it conflicts with some packages.
+% It's preferable to load `hyperref' last, as it conflicts with some packages.
 % If something needs to be loaded after hyperref, or to use \hypersetup, use
 % \AtBeginDocument again.
 \AtBeginDocument{%
@@ -132,7 +132,7 @@
   }%
 }
 
-% Only colour links in preprint mode so authors can see where they are
+% Only colour links in preprint mode so authors can see where they are.
 \ifthenelse{\boolean{@submission} \OR \boolean{@final}}{%
   \AtBeginDocument{\hypersetup{%
     linkcolor=black, citecolor=black, filecolor=black, urlcolor=black%
@@ -174,7 +174,7 @@
 \clubpenalty=99999                % No orphans at the top of pages
 \interfootnotelinepenalty=9999    % Don't break footnotes
 
-% Mark overfull lines in preprint mode
+% Mark overfull lines in preprint mode with a solid box.
 \ifthenelse{\boolean{@preprint}}{\setlength{\overfullrule}{5pt}}{}
 
 %% FORMATTING ================================================================
@@ -206,7 +206,7 @@
 \titleformat*{\subsection}{\baselineskip=14pt\sffamily\small\bfseries}
 \titleformat*{\subsubsection}{\baselineskip=14pt\sffamily\itshape\small}
 
-% Force a period after \paragraph headings
+% Add a period after \paragraph headings
 \newcommand{\@periodafter}[1]{#1.}
 \titleformat{\paragraph}[runin]%
   {\baselineskip=14pt\sffamily\itshape\small}%
@@ -280,7 +280,7 @@
 \definecolor{preprint}{rgb}{0.5, 0.5, 0.5}
 
 % Commands to insert text that should only be rendered in `preprint`,
-% `submission`, or `final` mode
+% `submission`, or `final` mode.
 \newcommand{\preprintonly}[1]%
   {\ifthenelse{\boolean{@preprint}}{\textcolor{preprint}{#1}}{}}
 \newcommand{\submissiononly}[1]{\ifthenelse{\boolean{@submission}}{#1}{}}

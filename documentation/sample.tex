@@ -123,7 +123,7 @@
 \begin{abstract}
 This paper describes the formatting requirements for SIGCHI Conference
 Proceedings and a few recommendations on writing for the worldwide SIGCHI
-readership. This paper is also the documentation for the \LaTeX\ class
+readership. It is also the documentation for the \LaTeX\ class
 for producing formatted papers.
 (This paper is not produced by SIGCHI, nor is it an authoritative source for
 the described formatting.)
@@ -149,15 +149,16 @@ material.
 
 \subsection{\LaTeX\ Document Class}
 The \LaTeX\ document class, \texttt{sigchi-modern}, will format your source
-using most of the guidelines in this paper. The document class is also fairly
-configurable, and contains many conveniences for correctly formatting figures,
-references, author lists, section headings, etc. Unless noted, the formatting
-requirements detailed in this document (fonts, spacing, formatting, etc.) will
-be handled automatically when using the \LaTeX\ document class correctly.
+using the guidelines in this paper (except the editorial guidelines, of course).
+The document class is also fairly configurable, and contains many conveniences
+for correctly formatting figures, references, author lists, section headings,
+etc. Unless noted, the formatting requirements detailed in this document (fonts,
+spacing, layout, etc.) will be applied automatically when using the \LaTeX\ 
+document class.
 
 The class operates in one of three modes: \texttt{preprint},
-\texttt{sub\-mis\-sion}, and \texttt{final}. The mode is set in an option to the
-\texttt{\textbackslash documentclass} command and toggles the output of various
+\texttt{sub\-mis\-sion}, or \texttt{final}. The mode is set in an option to the
+\texttt{\textbackslash documentclass} command and toggles the output of
 features for each stage of the authoring process (e.g., \texttt{preprint} shows
 coloured hyperlinks and formatting guides, and \texttt{submission} hides the
 authorship information).
@@ -175,7 +176,7 @@ Use 10-point Times for the body text; only use sans-serif or non-proportional
 fonts only for special purposes, such as headings or source code.
 
 \subsection{Title and Authors}
-Your paper's title, authors and affiliations should run across the full width of
+Your paper's title, authors, and affiliations should run across the full width of
 the page in a single column 17.8 cm (7 in.) wide. The title should be in
 18-point bold Helvetica. Authors' names should be in 12-point bold Times, and
 affiliations in 12-point Times 12-point (not bold, nor italic).
@@ -185,8 +186,8 @@ available. Please use full international addresses.
 
 \subsubsection{\LaTeX\ Commands}
 There are two ways to format the author and affiliation information  with the
-\LaTeX\ document class. Using these methods ensures an even and consistent
-formatting for this information across papers.
+\LaTeX\ document class. Using these methods ensures a consistent format for
+this information across papers.
 
 First, you can use the \texttt{\textbackslash author} and 
 \texttt{\textbackslash affiliation} commands to automatically produce a block
@@ -197,11 +198,11 @@ like that at the top of this document:
   \affiliation[1]{Department ...}
   \affiliation[2]{...}
 \end{verbatim}
-The optional argument to each command is the superscript symbol to match up
-authors with their affiliations.
+The optional argument to each command is the superscript symbol to match each
+author with their affiliation(s).
 
-If you have more complex formatting requirements, then use
-\texttt{\textbackslash author} commands with all of the information (without
+For more complex formatting, use
+\texttt{\textbackslash author} commands only (without
 \texttt{\textbackslash affiliation}).
 \begin{verbatim}
   \author{
@@ -215,8 +216,8 @@ If you have more complex formatting requirements, then use
 Use \texttt{\textbackslash authorname} and \texttt{\textbackslash authoraffil}
 to correctly format the author names and affiliation information, respectively.
 
-When using the second method, you should also use the
-\texttt{\textbackslash author\-list} command to set a comma-separated list of
+When using the latter method, you should also use
+\texttt{\textbackslash author\-list} to set a comma-separated list of
 the author names that will be written into the PDF metadata.
 \begin{verbatim}
   \authorlist{Author One, Author Two, 
@@ -240,7 +241,8 @@ adjusted with four lengths:
 
 Finally, if you need to insert some text below the author and affiliation
 blocks (useful for long email addresses), use the
-\texttt{\textbackslash authorpostscript} command.
+\texttt{\textbackslash authorpostscript} command. Refer to this document's
+source for examples of these commands.
 
 \subsection{Abstract and Keywords}
 Every submission should begin with an abstract of about 150 words in the
@@ -251,8 +253,8 @@ The abstract should be a concise statement of the problem, approach, and
 conclusions of the paper. It should clearly state the paper's contribution to
 the field of HCI.
 
-The first set of keywords will be used to index the paper in the proceedings and
-should be separated by semi-colons. The second set (using
+The first set of keywords will be used to index the paper in the proceedings,
+and should be separated by semi-colons. The second set (using
 \texttt{\textbackslash classification\{...\}}) are used to catalogue the paper
 in the ACM Digital Library. The latter are entries from the ACM Classification
 System~\cite{acm_categories}. In general, it should only be necessary to pick
@@ -266,20 +268,21 @@ classification.
 \subsection{Overful Lines}
 \LaTeX\ will sometimes create overfull lines that protrude into margins; these
 will be indicated in \texttt{preprint} mode with a solid black rectangle. To fix
-these protrusions (like~this~one~here), you should first try the
+these protrusions (like~the~one~here), you should first try the
 \href{http://ctan.org/pkg/microtype}{\texttt{microtype}} package, which allows
 small adjustments to the typesetting metrics (character protrusion and font
-expansion). You may also want to try to encourage \LaTeX\ to hyphenate the word
-(with \texttt{\textbackslash -}).\footnote{If the situation is dire, you can try
-\texttt{\textbackslash sloppy} in your document's preamble, which essentially
-asks \LaTeX\ to prefer underfull lines with extra whitespace; for more details,
-see \url{http://www.economics.utoronto.ca/osborne/latex/PMAKEUP.HTM}.}
+expansion). You may also want to encourage \LaTeX\ to hyphenate the offending
+word (with \texttt{\textbackslash -}).\footnote{If the situation is dire, you 
+can try \texttt{\textbackslash sloppy} in your document's preamble, which
+essentially asks \LaTeX\ to prefer underfull lines with extra whitespace; for
+more details, see
+\url{http://www.economics.utoronto.ca/osborne/latex/PMAKEUP.HTM}.}
 
 \subsection{First Page Copyright Notice}
 Leave 3 cm (1.25 in.) of blank space for the copyright notice at the bottom of
 the left column of the first page. This copyright notice will only appear in
-\texttt{final} mode, and should be formatted using the following commands as
-appropriate for the publication venue:
+\texttt{final} mode, and should be formatted using the following commands (as
+appropriate for the publication venue):
 \begin{verbatim}
   \confname{CHI'13}
   \confdate{April 27--May 2}
@@ -319,7 +322,7 @@ and not justified (this will be the default if you are using
 For papers from conference proceedings, include the title of the paper and an
 abbreviated name of the conference (e.g., for CHI 2003 proceedings, use
 \textit{Proc. CHI '03}). Do not include the location of the conference or the
-exact date; do include the page numbers if available. See the examples of
+exact date; do include the page numbers if available. See the example
 citations at the end of this document.
 
 Your references should be published materials accessible to the public. Internal
@@ -343,10 +346,12 @@ is the first word of the heading.
 Headings for sub-subsections should be in Helvetica 9-point italic with only the
 initial letters capitalised.
 Standard \texttt{\textbackslash sec\-tion}, \texttt{\textbackslash
-subsection}, and \texttt{\textbackslash subsubsection} commands will work fine.
+subsection}, and \texttt{\textbackslash subsubsection} commands will work as
+expected.
 
 \paragraph{Paragraph} Labels for individual paragaphs can also be used with
-\texttt{\textbackslash paragraph}.
+\texttt{\textbackslash paragraph}. A trailing period will automatically be
+appended by the command.
 
 \begin{figure}
   \centering
@@ -409,7 +414,7 @@ international audience, please pay attention to the following:
       ``Digital Signal Processing (DSP)''.
     \item Explain local references (i.e., not everyone knows all city names in a
       particular country).
-    \item Explain ``insider'' comments. Ensure that your whole audience
+    \item Explain ``insider'' comments. Ensure that your entire audience
       understands any reference whose meaning you do not describe (e.g., do not
       assume that everyone has used a Macintosh or a particular application).
     \item Explain colloquial language and puns. Understanding phrases like ``red
@@ -449,26 +454,6 @@ requirements for an ACM Compliant PDF are available at:
 Test your PDF file by viewing or printing it with the same software we will use
 when we receive it, Adobe Acrobat~\cite{acrobat}.
 
-\section{Blind Review}
-For archival submissions, CHI requires a ``blind review''. To prepare your
-submission for blind review, switch the document mode to \texttt{submission} to
-remove author and institutional identities in the title and header areas of the
-paper. You may also need to remove part or all of the Acknowledgments text.
-Further suppression of identity in the body of the paper and references is left
-to the authors' discretion. For more details, see the submission guidelines and
-checklist for your submission category.
-
-\subsection{\LaTeX\ Commands}
-To assist in automatically showing or hiding regions of your document, the
-commands \texttt{\textbackslash preprintonly\{...\}},
-\texttt{\textbackslash sub\-mis\-sion\-only\{...\}}, and
-\texttt{\textbackslash finalonly\{...\}} can be used to wrap content that should
-only appear in a particular modes.
-
-A \texttt{\textbackslash hideforsubmission\{...\}} command can be used to remove
-content \texttt{submission} mode only---for example, the
-\textit{Acknowledgements} section.
-
 % Use `balance' to ensure that the columns on the last page line up. 
 % Getting this to work can be a bit tricky, because the \balance command 
 % must appear in the first column of the last page.
@@ -478,6 +463,26 @@ content \texttt{submission} mode only---for example, the
 %     http://stackoverflow.com/questions/2149854/
 %
 \balance
+
+\section{Blind Review}
+For archival submissions, CHI requires a ``blind review''. To prepare your
+submission for blind review, switch the document mode to \texttt{submission} to
+remove author and institutional identities in the title and header areas of the
+paper. You may also need to remove part or all of the ``Acknowledgments'' text.
+Further suppression of identity in the body of the paper and references is left
+to the authors' discretion. For more details, see the submission guidelines and
+checklist for your submission category.
+
+\subsection{\LaTeX\ Commands}
+The \texttt{\textbackslash preprintonly\{...\}},
+\texttt{\textbackslash sub\-mis\-sion\-only\{...\}}, and
+\texttt{\textbackslash finalonly\{...\}} commands can be used to wrap content
+that should only appear in a particular mode when the document is compiled
+(e.g., TODO notes).
+
+A \texttt{\textbackslash hideforsubmission\{...\}} command will hide content
+in \texttt{submission} mode only---for example, the ``Acknowledgements''
+section, or URLs that may identify the authors.
 
 \section{Conclusion}
 It is important that you write for the SIGCHI audience. Please read previous
