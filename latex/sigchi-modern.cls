@@ -1,6 +1,6 @@
 %% SIGCHI Proceedings Document Class
-%% Version 1.3
-%% Copyright Philip Quinn (philip.quinn@canterbury.ac.nz), 24 September 2014,
+%% Version 1.5
+%% Copyright Philip Quinn (philip.quinn@canterbury.ac.nz), 25 October 2014,
 %% All Rights Reserved.
 %%
 %% This work may be distributed and/or modified under the conditions of the
@@ -82,8 +82,8 @@
 %% \end{document}
 %%
 
-\def\fileversion{1.3}
-\def\filedate{2014/09/24}
+\def\fileversion{1.5}
+\def\filedate{2014/10/25}
 \NeedsTeXFormat{LaTeX2e}
 \ProvidesClass{sigchi-modern}[\filedate\space\fileversion\space
     SIGCHI Proceedings Format (Modern)]
@@ -143,27 +143,15 @@
 \twocolumn
 \flushbottom
 
-\setlength{\topmargin}{-1.65cm}   % From the top of the page to the box
-                                  % containing the running head.
-                                  % (2.2cm - 1in - 37pt)
-
-\setlength{\oddsidemargin}{-0.64cm}  % (0.75in - 1in)
-\setlength{\evensidemargin}{-0.64cm}
-
-\setlength{\headheight}{12pt}     % Height of box with running head
-\setlength{\headsep}{25pt}        % Space between running head and text
-
-\setlength{\textheight}{23cm}
-\setlength{\textwidth}{18cm}
-\setlength{\columnsep}{0.33in}    % Width between columns
-\setlength{\columnseprule}{0pt}   % Width of the rule between columns
-\setlength{\hfuzz}{1pt}
-
-\setlength{\footnotesep}{5.6pt}   % Space between footnotes
-
-\skip\footins 8.1pt plus 4pt minus 2pt
-                                  % Space between last line of text and the
-                                  % first footnote
+% This is the frame described in the sample document:
+%   \RequirePackage[letterpaper,twocolumn,%
+%                   text={7in,9.25in},top=0.75in,columnsep=0.33in,%
+%                   hcentering]{geometry}
+% But the supplied LaTeX template produces this:
+\RequirePackage[letterpaper,twocolumn,%
+                text={7.1in,9.06in},top=0.87in,columnsep=0.33in,%
+                hcentering]{geometry}
+% (and is slightly off-centre.)
 
 \setlength{\parindent}{0pt}       % Width of paragraph indentation
 \setlength{\partopsep}{0pt}
@@ -337,7 +325,6 @@
 \newlength{\@authorheight}  % Stores the height of the author block
 \renewcommand{\@maketitle}{%
   \newpage\thispagestyle{empty}%
-  \vskip 1em%
   \begin{center}%
     % Title
     {\sffamily\bfseries\huge\baselineskip 20pt \@title \par}%
