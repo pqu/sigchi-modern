@@ -3,8 +3,8 @@ sigchi-modern
 
 A LaTeX document class for ACM SIGCHI conference proceedings.
 
-This class is a re-write of the `sigchi.cls` style to be based on the `article`
-class and to work better with modern LaTeX tools and packages.
+This class is a rewrite of the `sigchi.cls` style. It is based on the `article`
+class and works better with modern LaTeX tools and packages.
 
 Example
 -------
@@ -23,7 +23,7 @@ documentation.
 \doi{10.1000/182}
 \copylicense{\authorlicense}
 
-\usepackage[square,comma,numbers]{natbib}
+\usepackage{natbib}
 \bibliographystyle{acm-sigchi-modern}
 
 \begin{document}
@@ -60,4 +60,3 @@ documentation.
 \bibliography{bibfile}
 \end{document}
 ```
-

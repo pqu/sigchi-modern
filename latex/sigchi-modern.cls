@@ -1,6 +1,6 @@
 %% SIGCHI Proceedings Document Class
-%% Version 1.5
-%% Copyright Philip Quinn (philip.quinn@canterbury.ac.nz), 25 October 2014,
+%% Version 1.6
+%% Copyright Philip Quinn (philip.quinn@canterbury.ac.nz), 30 January 2015,
 %% All Rights Reserved.
 %%
 %% This work may be distributed and/or modified under the conditions of the
@@ -19,13 +19,12 @@
 %% INTRODUCTION ==============================================================
 %%
 %% This document class formats articles in the SIGCHI conference proceedings
-%% format. It is a re-write of previous versions, and improves upon them by
-%% using modern LaTeX techniques and packages to minimally modify the `article'
-%% class. It is easier to work with, more compatible with other packages, and
-%% produces tidier output.
+%% format. It improves upon previous versions by using modern LaTeX techniques
+%% and packages to minimally modify the `article' class. It is easier to work
+%% with, more compatible with other packages, and produces tidier output.
 %%
 %% Refer to the `sigchi-modern-sample.tex' and `sigchi-modern-sample.pdf' files
-%% for more complete documentation and examples of using this class and the
+%% for more complete documentation, and examples using this class and the
 %% SIGCHI style.
 %%
 %% Based on the layout of previous `sigchi.cls' formats by:
@@ -44,7 +43,7 @@
 %% \doi{10.1000/182}
 %% \copylicense{\authorlicense}
 %%
-%% \usepackage[square,comma,numbers]{natbib}
+%% \usepackage{natbib}
 %% \bibliographystyle{acm-sigchi-modern}
 %%
 %% \begin{document}
@@ -82,8 +81,8 @@
 %% \end{document}
 %%
 
-\def\fileversion{1.5}
-\def\filedate{2014/10/25}
+\def\fileversion{1.6}
+\def\filedate{2015/01/30}
 \NeedsTeXFormat{LaTeX2e}
 \ProvidesClass{sigchi-modern}[\filedate\space\fileversion\space
     SIGCHI Proceedings Format (Modern)]
@@ -96,8 +95,8 @@
 \newboolean{@final} \setboolean{@final}{false}
 
 % One of these options should be set, and toggles certain output/formatting
-% options. (For example, the author list is rendered for `preprint' and `final`,
-% but not `submission'.)
+% options. For example, the author list is rendered for `preprint' and `final`,
+% but not `submission'.
 \DeclareOption{preprint}{\setboolean{@preprint}{true}}
 \DeclareOption{submission}{\setboolean{@submission}{true}}
 \DeclareOption{final}{\setboolean{@final}{true}}
@@ -147,7 +146,7 @@
 %   \RequirePackage[letterpaper,twocolumn,%
 %                   text={7in,9.25in},top=0.75in,columnsep=0.33in,%
 %                   hcentering]{geometry}
-% But the supplied LaTeX template produces this:
+% But the original SIGCHI LaTeX template produces this:
 \RequirePackage[letterpaper,twocolumn,%
                 text={7.1in,9.06in},top=0.87in,columnsep=0.33in,%
                 hcentering]{geometry}
@@ -172,8 +171,7 @@
 \RequirePackage[cmintegrals]{newtxmath}
 \RequirePackage[scaled]{helvet}
 \RequirePackage[T1]{fontenc}
-\renewcommand{\ttdefault}{cmtt}       % Computer Modern for tt
-\RequirePackage{textcomp}
+\renewcommand{\ttdefault}{cmtt}  % Computer Modern for tt
 
 % Shrink the baseline a bit on \normalsize
 \renewcommand{\normalsize}{%
@@ -246,6 +244,7 @@
 % Bibliography
 \AtBeginDocument{%
   \@ifpackageloaded{natbib}{%
+    \setcitestyle{square,comma,numbers}%
     % Simpler numbering in bibliography 
     \renewcommand*{\@biblabel}[1]{\hfill#1.}%
     \setlength{\bibsep}{0pt}%
@@ -317,7 +316,7 @@
           \@banner%
         \endgroup\par%
         \vskip 1.5\baselineskip}{}%
-    ]%
+      ]%
     \@copyrightspace}%
   \endgroup%
   \global\let\maketitle\relax}
@@ -370,9 +369,9 @@
 \newlength{\authorwidth} \setlength{\authorwidth}{8em}
 \newlength{\affilwidth}  \setlength{\affilwidth}{15em}
 
-% Add a new author to the author lists.
+% Add a new author \@authorlist.
 % The first parameter is an optional number/symbol to distinguish authors of
-% different/multiple affiliations
+% different/multiple affiliations.
 \renewcommand{\author}[2][]{%
   \addtocounter{@authors}{1}%
   \begingroup%
@@ -395,8 +394,7 @@
   \endgroup%
 }
 
-% Add a new affiliation to the affiliation lists following the same pattern as
-% \author
+% Add a new affiliation to \@affillist using the same pattern as \author
 \newcommand{\affiliation}[2][]{%
   \addtocounter{@affiliations}{1}%
   \begingroup%
@@ -408,13 +406,12 @@
       \fi%
       \protect\parbox[t]{\affilwidth}{%
         \protect\centering%
-        \if\relax#1\else\authoraffil{$^{#1}$}\fi\protect\authoraffil{#2}%    
+        \if\relax#1\else\authoraffil{$^{#1}$}\fi\protect\authoraffil{#2}%
       }}%
   \endgroup%
 }
 
-% A way to content information after the affiliations (typically, email
-% addresses)
+% Content block after the affiliations (e.g., email addresses)
 \newcommand{\authorpostscript}[1]{\renewcommand{\@authorpostscript}%
                                  {\protect\authoraffil{#1}}}
 
@@ -438,8 +435,8 @@
 }
 
 %% COPYRIGHT SECTION =========================================================
-% These should be set in the document for the particular conference/
-% proceedings that the document appears in.
+% These should be set for the particular conference/proceedings that the
+% article appears in.
 \newtoks\confname     \global\confname={XXX'XX}
 \newtoks\confyear     \global\confyear={20XX}
 \newtoks\confdate     \global\confdate={January 1--2}
