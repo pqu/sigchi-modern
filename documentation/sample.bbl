@@ -1,41 +1,98 @@
-\begin{thebibliography}{1}
+%%% -*-BibTeX-*-
+%%% Do NOT edit. File created by BibTeX with style
+%%% ACM-Reference-Format-Journals [18-Jan-2012].
 
-\bibitem[acrobat()]{acrobat}
-{Adobe Acrobat}.
-\newblock \url{http://www.adobe.com/products/acrobat/}.
+\begin{thebibliography}{00}
 
-\bibitem[APA(2009)]{apa}
-APA.
-\newblock {\em Publication Manual of the American Psychological Association},
-  6th~ed.
-\newblock APA, Washington, DC, USA, 2009.
+%%% ====================================================================
+%%% NOTE TO THE USER: you can override these defaults by providing
+%%% customized versions of any of these macros before the \bibliography
+%%% command.  Each of them MUST provide its own final punctuation,
+%%% except for \shownote{}, \showDOI{}, and \showURL{}.  The latter two
+%%% do not use final punctuation, in order to avoid confusing it with
+%%% the Web address.
+%%%
+%%% To suppress output of a particular field, define its macro to expand
+%%% to an empty string, or better, \unskip, like this:
+%%%
+%%% \newcommand{\showDOI}[1]{\unskip}   % LaTeX syntax
+%%%
+%%% \def \showDOI #1{\unskip}           % plain TeX syntax
+%%%
+%%% ====================================================================
 
-\bibitem[association()]{acm_categories}
-{How to Classify Works Using ACM's Computing Classification System}.
-\newblock \url{http://www.acm.org/class/how_to_use.html}.
+\ifx \showCODEN    \undefined \def \showCODEN     #1{\unskip}     \fi
+\ifx \showDOI      \undefined \def \showDOI       #1{{\tt DOI:}\penalty0{#1}\ }
+  \fi
+\ifx \showISBNx    \undefined \def \showISBNx     #1{\unskip}     \fi
+\ifx \showISBNxiii \undefined \def \showISBNxiii  #1{\unskip}     \fi
+\ifx \showISSN     \undefined \def \showISSN      #1{\unskip}     \fi
+\ifx \showLCCN     \undefined \def \showLCCN      #1{\unskip}     \fi
+\ifx \shownote     \undefined \def \shownote      #1{#1}          \fi
+\ifx \showarticletitle \undefined \def \showarticletitle #1{#1}   \fi
+\ifx \showURL      \undefined \def \showURL       #1{#1}          \fi
 
-\bibitem[Card et~al.(1990)Card, Mackinlay, and Robertson]{Card1990}
-Card, S.~K., Mackinlay, J.~D., and Robertson, G.~G.
-\newblock \href{http://doi.acm.org/10.1145/97243.97263}{The design space of
+\bibitem{acrobat}
+ 2015.
+\newblock {Adobe Acrobat}.
+\newblock   (2015).
+\newblock
+\newblock
+\shownote{\url{http://www.adobe.com/products/acrobat/}.}
+
+
+\bibitem{acm_categories}
+{ACM}. 1998.
+\newblock {How to Classify Works Using ACM's Computing Classification System}.
+\newblock   (1998).
+\newblock
+\newblock
+\shownote{\url{http://www.acm.org/class/how_to_use.html}.}
+
+
+\bibitem{apa}
+{APA}. 2009.
+\newblock {\em Publication Manual of the American Psychological Association\/}
+  (6th ed.).
+\newblock APA, Washington, DC, USA.
+\newblock
+
+
+\bibitem{Card1990}
+{Stuart~K. Card}, {Jock~D. Mackinlay}, {and} {George~G. Robertson}. 1990.
+\newblock \showarticletitle{The design space of input devices}. In {\em
+  Proceedings of the SIGCHI conference on Human factors in computing systems:
+  Empowering people} {\em (CHI '90)}. ACM, New York, NY, USA, 117--124.
+\newblock
+\showISBNx{0-201-50932-6}
+\showDOI{%
+\url{http://dx.doi.org/10.1145/97243.97263}}
+
+
+\bibitem{Card1991}
+{Stuart~K. Card}, {Jock~D. Mackinlay}, {and} {George~G. Robertson}. 1991.
+\newblock \showarticletitle{A morphological analysis of the design space of
   input devices}.
-\newblock In {\em Proc.\ CHI '90}, ACM (New York, NY, USA,
-  1990), 117--124.
-
-\bibitem[Card et~al.(1991)Card, Mackinlay, and Robertson]{Card1991}
-Card, S.~K., Mackinlay, J.~D., and Robertson, G.~G.
-\newblock \href{http://doi.acm.org/10.1145/123078.128726}{A morphological
-  analysis of the design space of input devices}.
-\newblock {\em ACM TOIS 9}, 2 (April 1991),
+\newblock {\em ACM Transactions on Information Systems\/} {9}, 2 (April 1991),
   99--122.
+\newblock
+\showISSN{1046-8188}
+\showDOI{%
+\url{http://dx.doi.org/10.1145/123078.128726}}
 
-\bibitem[Card et~al.(1983)Card, Thomas, and Newall]{Card1983}
-Card, S.~K., Thomas, T.~P., and Newall, A.
+
+\bibitem{Card1983}
+{S.~K. Card}, {T.~P. Thomas}, {and} {A. Newall}. 1983.
 \newblock {\em The Psychology of Human-Computer Interaction}.
-\newblock Lawrence Erlbaum Associates, London, 1983.
+\newblock Lawrence Erlbaum Associates, London.
+\newblock
 
-\bibitem[Gillick and Lam(1996)]{Gillick1996}
-Gillick, W.~G., and Lam, C.~C., U.S.
-\newblock Patent No.\ 5530455. U.S. Patent and Trademark Office (Washington,
-  DC, 1996).
+
+\bibitem{Gillick1996}
+{William~G. Gillick} {and} {Clement~C. Lam}. 1996.
+\newblock Roller mouse for implementing scrolling in windows applications.
+\newblock  (June 1996).
+\newblock U.S.
+\newblock Patent No.\ 5,530,455,  Filed 10 August 1994,  Issued 6 June 1996.
 
 \end{thebibliography}

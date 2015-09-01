@@ -23,7 +23,7 @@ documentation.
 \doi{10.1000/182}
 \copylicense{\authorlicense}
 
-\usepackage{natbib}
+\usepackage[numbers]{natbib}
 \bibliographystyle{acm-sigchi-modern}
 
 \begin{document}
