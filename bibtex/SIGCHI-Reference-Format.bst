@@ -27,6 +27,9 @@
 %%%  }
 %%% ====================================================================
 
+% "SIGCHI Format" BibTeX style, Forked from ACM-Reference-Format-Journals.bst
+%  Modifications 13-FEBURARY-2015 (David Ayman Shamma)
+
 % "ACM Transactions" BibTeX style, ACM-Reference-Format-Journals.bst
 %  for BibTeX version 0.99c, LaTeX version 3.141
 %  ACM extensions with code cleaned up, extended, and debugged 10--15-Nov-2008
@@ -2365,30 +2368,30 @@ FUNCTION { calc.label }
 %
 % Change by Gerry: use number-like citations for transactions
 % 2011/03/23
-%
-%FUNCTION {output.bibitem}
-%{ newline$
-%  "\bibitem{" write$
-%  cite$ write$
-%  "}" write$
-%  newline$
-%  ""
-%  before.all 'output.state :=
-%}
-
-FUNCTION { output.bibitem }
-{
-  newline$
-  "\bibitem[\protect\citeauthoryear{" write$
-  calc.label write$
-  sort.year write$
-  "}]%" writeln
-  "        {" write$
+% Reverting: Ayman
+FUNCTION {output.bibitem}
+{ newline$
+  "\bibitem{" write$
   cite$ write$
-  "}" writeln
+  "}" write$
+  newline$
   ""
   before.all 'output.state :=
 }
+
+% FUNCTION { output.bibitem }
+% {
+%   newline$
+%   "\bibitem[\protect\citeauthoryear{" write$
+%   calc.label write$
+%   sort.year write$
+%   "}]%" writeln
+%   "        {" write$
+%   cite$ write$
+%   "}" writeln
+%   ""
+%   before.all 'output.state :=
+% }
 
 
 FUNCTION { output.issue.doi.coden.isxn.lccn.url }
