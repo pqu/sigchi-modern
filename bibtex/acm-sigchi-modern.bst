@@ -29,6 +29,7 @@
 
 % "SIGCHI Format" BibTeX style, Forked from ACM-Reference-Format-Journals.bst
 %  Modifications 13-FEBURARY-2015 (David Ayman Shamma)
+%  Modifications 1-SEPTEMBER-2015 (Philip Quinn)
 
 % "ACM Transactions" BibTeX style, ACM-Reference-Format-Journals.bst
 %  for BibTeX version 0.99c, LaTeX version 3.141
@@ -211,6 +212,14 @@ ENTRY
         isbn-13       % UTAH
         issn          % UTAH
         lccn          % UTAH
+    % Patent keys
+    nationality
+    dayfiled
+    monthfiled
+    yearfiled
+    dayissued
+    monthissued
+    yearissued
   }
   {}
   { label.year extra.label sort.year sort.label }
@@ -2453,6 +2462,84 @@ FUNCTION { output.issue.doi.coden.isxn.lccn.url.note.check }
   ""
 }
 
+FUNCTION { format.patnumber }
+{ number empty$
+    { "???" }
+    { new.block "Patent No.\ " number * }
+  if$
+}
+
+FUNCTION { format.nationality }
+{ nationality empty.or.unknown
+    { "???" }
+    { nationality }
+  if$
+}
+
+FUNCTION { format.day.monthfiled }
+{ % push "day month " or "month " or "" onto output stack
+  dayfiled empty.or.unknown
+    {
+      monthfiled empty.or.unknown
+        { "" }
+        { monthfiled " " *}
+      if$
+    }
+    {
+      monthfiled empty.or.unknown
+        { "" }
+        { dayfiled " " * monthfiled * " " *}
+      if$
+    }
+  if$
+}
+
+FUNCTION { format.yearfiled }
+{ yearfiled empty.or.unknown
+    { "" }
+    { yearfiled }
+ if$
+}
+
+FUNCTION { format.day.monthissued }
+{ % push "day month " or "month " or "" onto output stack
+  dayissued empty.or.unknown
+    {
+      monthissued empty.or.unknown
+        { "" }
+        { monthissued " " *}
+      if$
+    }
+    {
+      monthissued empty.or.unknown
+        { "" }
+        { dayissued " " * monthissued * " " *}
+      if$
+    }
+  if$
+}
+
+FUNCTION { format.yearissued }
+{ yearissued empty.or.unknown
+    { "" }
+    { yearissued }
+ if$
+}
+
+FUNCTION { format.filed }
+{ yearfiled empty.or.unknown
+    { "" }
+    { " Filed " format.day.monthfiled * format.yearfiled * }
+  if$
+}
+
+FUNCTION { format.issued }
+{ yearissued empty.or.unknown
+    { "" }
+    { " Issued " format.day.monthissued * format.yearissued * }
+  if$
+}
+
 FUNCTION { article }
 {
   output.bibitem
@@ -2721,6 +2808,24 @@ FUNCTION { misc }
   output.day.month.year              % Gerry - appears odd if (only) the year is 'repeated' but (appears) 'valuable' if the month/day is _also_ included - 2011/09/28
   fin.block
   output.issue.doi.coden.isxn.lccn.url.note
+  fin.entry
+}
+
+FUNCTION { patent }
+{ 
+  output.bibitem
+  format.authors output
+  author format.key output
+  output.year.check
+  new.block
+  format.title output
+  new.block
+  format.day.month.year output
+  new.block
+  format.nationality output.nonnull
+  format.patnumber output.nonnull
+  format.filed output
+  format.issued output
   fin.entry
 }
 
