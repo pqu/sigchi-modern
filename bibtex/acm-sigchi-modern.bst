@@ -2377,31 +2377,19 @@ FUNCTION { calc.label }
 %
 % Change by Gerry: use number-like citations for transactions
 % 2011/03/23
-% Reverting: Ayman
-FUNCTION {output.bibitem}
-{ newline$
-  "\bibitem{" write$
-  cite$ write$
-  "}" write$
+FUNCTION { output.bibitem }
+{
   newline$
+  "\bibitem[\protect\citeauthoryear{" write$
+  calc.label write$
+  sort.year write$
+  "}]%" writeln
+  "        {" write$
+  cite$ write$
+  "}" writeln
   ""
   before.all 'output.state :=
 }
-
-% FUNCTION { output.bibitem }
-% {
-%   newline$
-%   "\bibitem[\protect\citeauthoryear{" write$
-%   calc.label write$
-%   sort.year write$
-%   "}]%" writeln
-%   "        {" write$
-%   cite$ write$
-%   "}" writeln
-%   ""
-%   before.all 'output.state :=
-% }
-
 
 FUNCTION { output.issue.doi.coden.isxn.lccn.url }
 { % enter and return with stack empty
