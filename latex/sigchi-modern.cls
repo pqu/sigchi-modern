@@ -1,6 +1,6 @@
 %% SIGCHI Proceedings Document Class
-%% Version 1.6
-%% Copyright Philip Quinn (philip.quinn@canterbury.ac.nz), 30 January 2015,
+%% Version 1.7
+%% Copyright Philip Quinn (philip.quinn@canterbury.ac.nz), 8 September 2015.
 %% All Rights Reserved.
 %%
 %% This work may be distributed and/or modified under the conditions of the
@@ -82,7 +82,7 @@
 %%
 
 \def\fileversion{1.6}
-\def\filedate{2015/01/30}
+\def\filedate{2015/09/08}
 \NeedsTeXFormat{LaTeX2e}
 \ProvidesClass{sigchi-modern}[\filedate\space\fileversion\space
     SIGCHI Proceedings Format (Modern)]
@@ -315,7 +315,7 @@
           \def\@captype{figure}%
           \@banner%
         \endgroup\par%
-        \vskip 1.5\baselineskip}{}%
+        \vskip\baselineskip}{}%
       ]%
     \@copyrightspace}%
   \endgroup%
@@ -328,6 +328,7 @@
     % Title
     {\sffamily\bfseries\huge\baselineskip 20pt \@title \par}%
      \hypersetup{pdftitle={\@title}}%
+    \vspace{0.5ex}%
     % Author block
     \ifthenelse{\boolean{@preprint} \OR \boolean{@final}}%
       {\@author}%
