@@ -32,7 +32,8 @@
 \ifx \showarticletitle \undefined \def \showarticletitle #1{#1}   \fi
 \ifx \showURL      \undefined \def \showURL       #1{#1}          \fi
 
-\bibitem{acrobat}
+\bibitem[\protect\citeauthoryear{??}{acr}{2015}]%
+        {acrobat}
  2015.
 \newblock {Adobe Acrobat}.
 \newblock   (2015).
@@ -41,7 +42,8 @@
 \shownote{\url{http://www.adobe.com/products/acrobat/}.}
 
 
-\bibitem{acm_categories}
+\bibitem[\protect\citeauthoryear{ACM}{ACM}{1998}]%
+        {acm_categories}
 {ACM}. 1998.
 \newblock {How to Classify Works Using ACM's Computing Classification System}.
 \newblock   (1998).
@@ -50,7 +52,8 @@
 \shownote{\url{http://www.acm.org/class/how_to_use.html}.}
 
 
-\bibitem{apa}
+\bibitem[\protect\citeauthoryear{APA}{APA}{2009}]%
+        {apa}
 {APA}. 2009.
 \newblock {\em Publication Manual of the American Psychological Association\/}
   (6th ed.).
@@ -58,7 +61,9 @@
 \newblock
 
 
-\bibitem{Card1990}
+\bibitem[\protect\citeauthoryear{Card, Mackinlay, and Robertson}{Card
+  et~al\mbox{.}}{1990}]%
+        {Card1990}
 {Stuart~K. Card}, {Jock~D. Mackinlay}, {and} {George~G. Robertson}. 1990.
 \newblock \showarticletitle{The design space of input devices}. In {\em
   Proceedings of the SIGCHI conference on Human factors in computing systems:
@@ -69,7 +74,9 @@
 \url{http://dx.doi.org/10.1145/97243.97263}}
 
 
-\bibitem{Card1991}
+\bibitem[\protect\citeauthoryear{Card, Mackinlay, and Robertson}{Card
+  et~al\mbox{.}}{1991}]%
+        {Card1991}
 {Stuart~K. Card}, {Jock~D. Mackinlay}, {and} {George~G. Robertson}. 1991.
 \newblock \showarticletitle{A morphological analysis of the design space of
   input devices}.
@@ -81,14 +88,17 @@
 \url{http://dx.doi.org/10.1145/123078.128726}}
 
 
-\bibitem{Card1983}
+\bibitem[\protect\citeauthoryear{Card, Thomas, and Newall}{Card
+  et~al\mbox{.}}{1983}]%
+        {Card1983}
 {S.~K. Card}, {T.~P. Thomas}, {and} {A. Newall}. 1983.
 \newblock {\em The Psychology of Human-Computer Interaction}.
 \newblock Lawrence Erlbaum Associates, London.
 \newblock
 
 
-\bibitem{Gillick1996}
+\bibitem[\protect\citeauthoryear{Gillick and Lam}{Gillick and Lam}{1996}]%
+        {Gillick1996}
 {William~G. Gillick} {and} {Clement~C. Lam}. 1996.
 \newblock Roller mouse for implementing scrolling in windows applications.
 \newblock  (June 1996).
