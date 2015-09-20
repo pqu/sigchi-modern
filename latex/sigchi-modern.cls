@@ -193,7 +193,7 @@
 \titleformat*{\subsubsection}{\baselineskip=14pt\sffamily\itshape\small}
 
 % Add a period after \paragraph headings
-\newcommand{\@periodafter}[1]{#1.}
+\newcommand*{\@periodafter}[1]{#1.}
 \titleformat{\paragraph}[runin]%
   {\baselineskip=14pt\sffamily\itshape\small}%
   {\theparagraph}{\z@}{}[\@periodafter]
@@ -275,12 +275,12 @@
 \newcommand{\hideforsubmission}[1]{\ifthenelse{\boolean{@submission}}{}{#1}}
 
 % Special sections for author keywords/ACM classification
-\newcommand{\keywords}[1]{%
+\newcommand*{\keywords}[1]{%
   \subsection*{Author Keywords}%
   #1\hypersetup{pdfkeywords={#1}}%
 }
 
-\newcommand{\classification}{\subsection*{ACM Classification}}
+\newcommand*{\classification}{\subsection*{ACM Classification}}
 % Takes three or four arguments, depending on the depth in the classification
 \DeclareDocumentCommand\category{m m m o}{%
   #1 [\textbf{#2}] #3%
@@ -288,7 +288,7 @@
 }
 
 % Deprecated
-\newcommand{\terms}[1]{%
+\newcommand*{\terms}[1]{%
   \subsection*{General Terms}%
   #1%
 }
@@ -335,8 +335,8 @@
   \end{center}%
   \vskip -1ex%
 }
-\newcommand{\email}[1]{#1}
-\newcommand{\mailto}[1]{\href{mailto:#1}{\email{#1}}}
+\newcommand*{\email}[1]{#1}
+\newcommand*{\mailto}[1]{\href{mailto:#1}{\email{#1}}}
 
 %% Authors
 % Authors are set using one \author{} for each author, and one \affiliation{}
@@ -353,10 +353,10 @@
 % A comma-separated list of author names
 \newcommand{\@autoauthorlist}{}   % Set internally by \author
 \newcommand{\@pdfauthorlist}{}    % User-override
-\newcommand{\authorlist}[1]{\renewcommand{\@pdfauthorlist}{#1}} 
+\newcommand*{\authorlist}[1]{\renewcommand{\@pdfauthorlist}{#1}} 
 
 % Text styling for names/affiliations
-\newcommand{\authorname}[1]{\large\textbf{#1}}
+\newcommand*{\authorname}[1]{\large\textbf{#1}}
 \newcommand{\authoraffil}[1]{\fontsize{11}{13}\normalfont{#1}}
 
 % Spacing between names/affiliations
@@ -370,7 +370,7 @@
 % Add a new author \@authorlist.
 % The first parameter is an optional number/symbol to distinguish authors of
 % different/multiple affiliations.
-\renewcommand{\author}[2][]{%
+\renewcommand*{\author}[2][]{%
   \addtocounter{@authors}{1}%
   \begingroup%
     \let\protect\@unexpandable@protect%
