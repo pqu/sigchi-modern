@@ -321,7 +321,6 @@
   \endgroup%
   \global\let\maketitle\relax}
 
-\newlength{\@authorheight}  % Stores the height of the author block
 \renewcommand{\@maketitle}{%
   \newpage\thispagestyle{empty}%
   \begin{center}%
@@ -332,9 +331,7 @@
     % Author block
     \ifthenelse{\boolean{@preprint} \OR \boolean{@final}}%
       {\@author}%
-      {\settoheight{\@authorheight}{\@author}%
-       \vspace{\@authorheight}%
-       \vspace{0.2ex}}%  TODO: HACK
+      {\phantom{\@author}}%
   \end{center}%
   \vskip -1ex%
 }
