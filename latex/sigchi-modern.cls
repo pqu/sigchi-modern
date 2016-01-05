@@ -1,6 +1,6 @@
 %% SIGCHI Proceedings Document Class
 %% Version 1.7
-%% Copyright Philip Quinn (philip.quinn@canterbury.ac.nz), 8 September 2015.
+%% Copyright Philip Quinn (philip.quinn@canterbury.ac.nz), 5 January 2016.
 %% All Rights Reserved.
 %%
 %% This work may be distributed and/or modified under the conditions of the
@@ -81,8 +81,8 @@
 %% \end{document}
 %%
 
-\def\fileversion{1.6}
-\def\filedate{2015/09/08}
+\def\fileversion{1.7}
+\def\filedate{2016/01/05}
 \NeedsTeXFormat{LaTeX2e}
 \ProvidesClass{sigchi-modern}[\filedate\space\fileversion\space
     SIGCHI Proceedings Format (Modern)]
@@ -335,7 +335,7 @@
   \end{center}%
   \vskip -1ex%
 }
-\newcommand*{\email}[1]{#1}
+\newcommand{\email}[1]{#1}
 \newcommand*{\mailto}[1]{\href{mailto:#1}{\email{#1}}}
 
 %% Authors
@@ -353,10 +353,10 @@
 % A comma-separated list of author names
 \newcommand{\@autoauthorlist}{}   % Set internally by \author
 \newcommand{\@pdfauthorlist}{}    % User-override
-\newcommand*{\authorlist}[1]{\renewcommand{\@pdfauthorlist}{#1}} 
+\newcommand{\authorlist}[1]{\renewcommand{\@pdfauthorlist}{#1}} 
 
 % Text styling for names/affiliations
-\newcommand*{\authorname}[1]{\large\textbf{#1}}
+\newcommand{\authorname}[1]{\large\textbf{#1}}
 \newcommand{\authoraffil}[1]{\fontsize{11}{13}\normalfont{#1}}
 
 % Spacing between names/affiliations
@@ -459,7 +459,7 @@
   \mailto{permissions@acm.org}.\\
   \copyconf\\
   Copyright \the\procyear\ ACM \the\procissn\ldots\the\procprice.\\
-  \href{http://dx.doi.org/\the\doi}{http://dx.doi.org/\the\doi}}
+  DOI: \href{http://dx.doi.org/\the\doi}{http://dx.doi.org/\the\doi}}
 \newcommand{\authorlicense}{%
   Permission to make digital or hard copies of all or part of this work 
   for personal or classroom use is granted without fee provided that 
@@ -474,7 +474,7 @@
   Copyright is held by the owner/author(s). Publication rights licensed 
   to ACM.\\
   ACM \the\procissn\ldots\the\procprice.\\
-  \href{http://dx.doi.org/\the\doi}{http://dx.doi.org/\the\doi}}
+  DOI: \href{http://dx.doi.org/\the\doi}{http://dx.doi.org/\the\doi}}
 \newcommand{\openlicense}{%
   Permission to make digital or hard copies of part or all of this work 
   for personal or classroom use is granted without fee provided that 
@@ -485,7 +485,7 @@
   is held by the author/owner(s).\\
   \copyconf\\
   ACM \the\procissn.\\
-  \href{http://dx.doi.org/\the\doi}{http://dx.doi.org/\the\doi}}
+  DOI: \href{http://dx.doi.org/\the\doi}{http://dx.doi.org/\the\doi}}
 
 % Set by the author to one of the above three options
 \newtoks\copylicense \global\copylicense={\authorlicense}
@@ -503,7 +503,7 @@
       \setlength{\unitlength}{1pc}%
       \newlength{\@copyheight} \settoheight{\@copyheight}{\@copybox}%
       \begin{picture}(\linewidth, \@copyheight - 1pc)%
-        \put(0,0){\scriptsize\@copyrightnotice}%
+        \put(0,-0.67){\scriptsize\@copyrightnotice}%
       \end{picture}%
     \end{center}%
   \end@float%
