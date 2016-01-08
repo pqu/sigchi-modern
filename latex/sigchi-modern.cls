@@ -1,6 +1,6 @@
 %% SIGCHI Proceedings Document Class
-%% Version 1.7
-%% Copyright Philip Quinn (philip.quinn@canterbury.ac.nz), 5 January 2016.
+%% Version 1.71
+%% Copyright Philip Quinn (philip.quinn@canterbury.ac.nz), 8 January 2016.
 %% All Rights Reserved.
 %%
 %% This work may be distributed and/or modified under the conditions of the
@@ -81,8 +81,8 @@
 %% \end{document}
 %%
 
-\def\fileversion{1.7}
-\def\filedate{2016/01/05}
+\def\fileversion{1.71}
+\def\filedate{2016/01/08}
 \NeedsTeXFormat{LaTeX2e}
 \ProvidesClass{sigchi-modern}[\filedate\space\fileversion\space
     SIGCHI Proceedings Format (Modern)]
@@ -142,15 +142,14 @@
 \twocolumn
 \flushbottom
 
-% This is the frame described in the sample document:
-%   \RequirePackage[letterpaper,twocolumn,%
-%                   text={7in,9.25in},top=0.75in,columnsep=0.33in,%
-%                   hcentering]{geometry}
-% But the original SIGCHI LaTeX template produces this:
 \RequirePackage[letterpaper,twocolumn,%
-                text={7.1in,9.06in},top=0.87in,columnsep=0.33in,%
+                text={7in,9.25in},top=0.75in,columnsep=0.33in,%
                 hcentering]{geometry}
-% (and is slightly off-centre.)
+% The original SIGCHI LaTeX template produces this:
+%   \RequirePackage[letterpaper,twocolumn,%
+%                   text={7.1in,9.06in},top=0.87in,columnsep=0.33in,%
+%                   hcentering]{geometry}
+% (and is slightly off-centre).
 
 \setlength{\parindent}{0pt}       % Width of paragraph indentation
 \setlength{\partopsep}{0pt}
