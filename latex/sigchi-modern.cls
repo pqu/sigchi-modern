@@ -1,6 +1,6 @@
 %% SIGCHI Proceedings Document Class
-%% Version 1.71
-%% Copyright Philip Quinn (philip.quinn@canterbury.ac.nz), 8 January 2016.
+%% Version 1.8
+%% Copyright Philip Quinn (philip@quinn.gen.nz), 6 September 2019.
 %% All Rights Reserved.
 %%
 %% This work may be distributed and/or modified under the conditions of the
@@ -35,11 +35,11 @@
 %%
 %% \documentclass[preprint]{sigchi-modern}
 %%
-%% \confname{CHI'12}
-%% \confyear{2012}
-%% \confdate{May 5--10}
-%% \conflocation{Austin, Texas, USA}
-%% \procissn{978-1-4503-1015-4/12/05}
+%% \confname{CHI'20}
+%% \confyear{2020}
+%% \confdate{April 25--30}
+%% \conflocation{Honolulu, HI, USA}
+%% \procissn{978-1-4503-6708-0/20/04}
 %% \doi{10.1000/182}
 %% \copylicense{\authorlicense}
 %%
@@ -70,9 +70,11 @@
 %% \end{abstract}
 %%
 %% \keywords{Guides; examples; documentation.}
-%% \classification{
-%%   \category{H.5.m}{Information Interfaces and Presentation}{Miscellaneous}
-%% }
+%% \begin{CCS}
+%%   \ccsdesc[500]{Human-centered computing~Human computer interaction (HCI)}
+%%   \ccsdesc[300]{Human-centered computing~Haptic devices}
+%%   \ccsdesc[100]{Human-centered computing~User studies}
+%% \end{CCS}
 %%
 %% \section{Introduction}
 %% \ldots
@@ -81,8 +83,8 @@
 %% \end{document}
 %%
 
-\def\fileversion{1.71}
-\def\filedate{2016/01/08}
+\def\fileversion{1.8}
+\def\filedate{2019/09/06}
 \NeedsTeXFormat{LaTeX2e}
 \ProvidesClass{sigchi-modern}[\filedate\space\fileversion\space
     SIGCHI Proceedings Format (Modern)]
@@ -291,6 +293,47 @@
   \subsection*{General Terms}%
   #1%
 }
+
+% Environment for the ACM CCS concepts (\ccsdesc commands).
+\newenvironment{CCS}{\subsection*{CCS Concepts}}{\@concepts}
+
+% Comment environment for the ACM CCS XML (to be parsed out of the latex source
+% by another tool).
+\RequirePackage{comment}
+\excludecomment{CCSXML}
+
+\newcounter{@concepts}  % Counter for the number of concepts.
+\newcommand{\@concepts}{}  % Accumulated concepts.
+
+% Takes one or two arguments: the significance (optional) and the path.
+\newcommand{\ccsdesc}[2][100]{\@ccsdesc@parse#1~#2~~\@ccsdesc@parse@end}
+
+% Parse CCS paths formatted as significance~general~specific.
+% This command is from acmart (https://github.com/borisveytsman/acmart).
+\RequirePackage{textcomp}
+\def\@ccsdesc@parse#1~#2~#3~{%
+  \stepcounter{@concepts}%
+  \expandafter\ifx\csname CCS@General@#2\endcsname\relax
+    \expandafter\gdef\csname CCS@General@#2\endcsname{\textbullet\
+      \textbf{#2}}%
+    \expandafter\gdef\csname CCS@Punctuation@#2\endcsname{; }%
+    \expandafter\gdef\csname CCS@Specific@#2\endcsname{}%
+  \g@addto@macro{\@concepts}{\csname CCS@General@#2\endcsname
+    \csname CCS@Punctuation@#2\endcsname
+    \csname CCS@Specific@#2\endcsname}%
+  \fi
+  \ifx#3\relax\relax\else
+    \expandafter\gdef\csname CCS@Punctuation@#2\endcsname{
+      \textrightarrow\ }%
+    \expandafter\g@addto@macro\expandafter{\csname CCS@Specific@#2\endcsname}{%
+     \addtocounter{@concepts}{-1}%
+     \ifnum#1>499\textbf{#3}\else
+     \ifnum#1>299\textit{#3}\else
+     #3\fi\fi\ifnum\value{@concepts}=0.\else; \fi}%
+  \fi
+\@ccsdesc@parse@finish}
+
+\def\@ccsdesc@parse@finish#1\@ccsdesc@parse@end{}
 
 %% TITLE & AUTHORS ===========================================================
 
