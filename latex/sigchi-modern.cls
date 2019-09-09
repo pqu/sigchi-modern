@@ -1,6 +1,6 @@
 %% SIGCHI Proceedings Document Class
-%% Version 1.8
-%% Copyright Philip Quinn (philip@quinn.gen.nz), 6 September 2019.
+%% Version 1.81
+%% Copyright Philip Quinn (philip@quinn.gen.nz), 8 September 2019.
 %% All Rights Reserved.
 %%
 %% This work may be distributed and/or modified under the conditions of the
@@ -83,8 +83,8 @@
 %% \end{document}
 %%
 
-\def\fileversion{1.8}
-\def\filedate{2019/09/06}
+\def\fileversion{1.81}
+\def\filedate{2019/09/08}
 \NeedsTeXFormat{LaTeX2e}
 \ProvidesClass{sigchi-modern}[\filedate\space\fileversion\space
     SIGCHI Proceedings Format (Modern)]
@@ -246,8 +246,7 @@
 \AtBeginDocument{%
   \@ifpackageloaded{natbib}{%
     \setcitestyle{square,comma,numbers}%
-    % Simpler numbering in bibliography 
-    \renewcommand*{\@biblabel}[1]{\hfill#1.}%
+    \renewcommand*{\@biblabel}[1]{\hfill[#1]}%
     \setlength{\bibsep}{0pt}%
     \renewcommand*{\bibfont}{%
       % Ragged right with hyphenation
