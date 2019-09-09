@@ -15,15 +15,15 @@ documentation.
 ```LaTeX
 \documentclass[preprint]{sigchi-modern}
 
-\confname{CHI'12}
-\confyear{2012}
-\confdate{May 5--10}
-\conflocation{Austin, Texas, USA}
-\procissn{978-1-4503-1015-4/12/05}
+\confname{CHI'20}
+\confyear{2020}
+\confdate{April 25--30}
+\conflocation{Honolulu, HI, USA}
+\procissn{978-1-4503-6708-0/20/04}
 \doi{10.1000/182}
 \copylicense{\authorlicense}
 
-\usepackage[numbers]{natbib}
+\usepackage{natbib}
 \bibliographystyle{acm-sigchi-modern}
 
 \begin{document}
@@ -50,9 +50,11 @@ documentation.
 \end{abstract}
 
 \keywords{Guides; examples; documentation.}
-\classification{
-  \category{H.5.m}{Information Interfaces and Presentation}{Miscellaneous}
-}
+\begin{CCS}
+  \ccsdesc[500]{Human-centered computing~Human computer interaction (HCI)}
+  \ccsdesc[300]{Human-centered computing~Haptic devices}
+  \ccsdesc[100]{Human-centered computing~User studies}
+\end{CCS}
 
 \section{Introduction}
 \ldots
