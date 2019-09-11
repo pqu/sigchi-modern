@@ -1,6 +1,6 @@
 %% SIGCHI Proceedings Document Class
-%% Version 1.81
-%% Copyright Philip Quinn (philip@quinn.gen.nz), 8 September 2019.
+%% Version 1.82
+%% Copyright Philip Quinn (philip@quinn.gen.nz), 10 September 2019.
 %% All Rights Reserved.
 %%
 %% This work may be distributed and/or modified under the conditions of the
@@ -83,8 +83,8 @@
 %% \end{document}
 %%
 
-\def\fileversion{1.81}
-\def\filedate{2019/09/08}
+\def\fileversion{1.82}
+\def\filedate{2019/09/10}
 \NeedsTeXFormat{LaTeX2e}
 \ProvidesClass{sigchi-modern}[\filedate\space\fileversion\space
     SIGCHI Proceedings Format (Modern)]
@@ -424,7 +424,7 @@
        % Add some padding to \authorwidth so it's not too tight
        \advance\authorwidth by 2em%
       \fi%
-      \protect\parbox[t]{\authorwidth}{%
+      \protect\parbox[t]{\expandafter{\the\authorwidth}}{%
         \protect\centering%
         \protect\authorname{#2}\if\relax#1\else$^{#1}$\fi%
       }%
