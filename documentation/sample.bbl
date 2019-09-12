@@ -71,7 +71,7 @@
 \newblock
 \showISBNx{0-201-50932-6}
 \showDOI{%
-\url{http://dx.doi.org/10.1145/97243.97263}}
+\url{https://doi.org/10.1145/97243.97263}}
 
 
 \bibitem[\protect\citeauthoryear{Card, Mackinlay, and Robertson}{Card
@@ -85,7 +85,7 @@
 \newblock
 \showISSN{1046-8188}
 \showDOI{%
-\url{http://dx.doi.org/10.1145/123078.128726}}
+\url{https://doi.org/10.1145/123078.128726}}
 
 
 \bibitem[\protect\citeauthoryear{Card, Thomas, and Newall}{Card
