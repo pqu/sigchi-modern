@@ -1,6 +1,6 @@
 %% SIGCHI Proceedings Document Class
-%% Version 1.82
-%% Copyright Philip Quinn (philip@quinn.gen.nz), 10 September 2019.
+%% Version 1.9
+%% Copyright Philip Quinn (philip@quinn.gen.nz), 17 February 2020.
 %% All Rights Reserved.
 %%
 %% This work may be distributed and/or modified under the conditions of the
@@ -486,7 +486,7 @@
 \newtoks\doi          \global\doi={10.1000/182}
 
 \newcommand{\copyconf}%
-  {\textit{\the\confname}, \the\confdate, \the\confyear, \the\conflocation.}
+  {\textit{\the\confname, \the\confdate, \the\confyear, \the\conflocation}.}
 
 \newcommand{\acmcopyright}{%
   Permission to make digital or hard copies of all or part of this work 
@@ -499,8 +499,9 @@
   prior specific permission and/or a fee. Request permission from
   \mailto{permissions@acm.org}.\\
   \copyconf\\
-  Copyright \the\procyear\ ACM \the\procissn\ldots\the\procprice.\\
-  DOI: \href{http://dx.doi.org/\the\doi}{http://dx.doi.org/\the\doi}}
+  \textcopyright~\the\procyear\ Association for Computing Machinery\\
+  ACM ISBN \the\procissn\ldots\the\procprice.\\
+  \href{http://dx.doi.org/\the\doi}{http://dx.doi.org/\the\doi}}
 \newcommand{\authorlicense}{%
   Permission to make digital or hard copies of all or part of this work 
   for personal or classroom use is granted without fee provided that 
@@ -512,21 +513,21 @@
   lists, requires prior specific permission and/or a fee. Request 
   permissions from \mailto{permissions@acm.org}.\\
   \copyconf\\
-  Copyright is held by the owner/author(s). Publication rights licensed 
-  to ACM.\\
-  ACM \the\procissn\ldots\the\procprice.\\
-  DOI: \href{http://dx.doi.org/\the\doi}{http://dx.doi.org/\the\doi}}
+  \textcopyright~\the\procyear\ Copyright is held by the owner/author(s).
+  Publication rights licensed to ACM.\\
+  ACM ISBN \the\procissn\ldots\the\procprice.\\
+  \href{http://dx.doi.org/\the\doi}{http://dx.doi.org/\the\doi}}
 \newcommand{\openlicense}{%
   Permission to make digital or hard copies of part or all of this work 
   for personal or classroom use is granted without fee provided that 
   copies are not made or distributed for profit or commercial advantage
   and that copies bear this notice and the full citation on the first 
   page. Copyrights for third-party components of this work must be 
-  honored. For all other uses, contact the owner/author(s). Copyright 
-  is held by the author/owner(s).\\
+  honored. For all other uses, contact the owner/author(s).\\
   \copyconf\\
-  ACM \the\procissn.\\
-  DOI: \href{http://dx.doi.org/\the\doi}{http://dx.doi.org/\the\doi}}
+  \textcopyright~\the\procyear\ Copyright is held by the owner/author(s).\\
+  ACM ISBN \the\procissn.\\
+  \href{http://dx.doi.org/\the\doi}{http://dx.doi.org/\the\doi}}
 
 % Set by the author to one of the above three options
 \newtoks\copylicense \global\copylicense={\authorlicense}
